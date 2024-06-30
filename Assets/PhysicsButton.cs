@@ -2,42 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.UI;
 
 public class PhysicsButton : MonoBehaviour
 {
     public Transform buttonTop;
+    public Transform buttonBase;
     public float force = 10;
-    private float upperLowerDiff;
     public bool isPressed;
-    private bool prevPressedState;
     public Collider[] CollidersToIgnore;
     public UnityEvent onPressed;
     public UnityEvent onReleased;
+    private float distance;
+    public float threshold = 0.07f;
 
     // Start is called before the first frame update
     void Start()
     {
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(buttonTop.position.y); 
-    }
-
    void FixedUpdate()
     {
-
+        distance = buttonTop.position.y-buttonBase.position.y;
+        if(distance <= threshold){
+            Pressed();
+        }else{
+            Released();
+        }
     }
 
     void Pressed(){
-        prevPressedState = isPressed;
         onPressed.Invoke();
     }
 
     void Released(){
-        prevPressedState = isPressed;
         onReleased.Invoke();
     }
 }
