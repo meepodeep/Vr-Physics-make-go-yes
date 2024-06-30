@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Grillable : MonoBehaviour
 {
     float grillPercent;
+    public TextMeshProUGUI borgerText;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +36,12 @@ public class Grillable : MonoBehaviour
     }
     void Cooked()
     {
+    borgerText.text = "Cooked";
     Debug.Log("cooked");
     }
      void Burnt()
     {
+    borgerText.text = "Burnt";
     Debug.Log("burnt");
     }
 }
