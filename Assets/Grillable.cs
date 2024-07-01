@@ -7,6 +7,9 @@ public class Grillable : MonoBehaviour
 {
     float grillPercent;
     public TextMeshProUGUI borgerText;
+    public GameObject burgerRaw; 
+    public GameObject burgerCooked;
+    public GameObject burgerBurnt;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +19,7 @@ public class Grillable : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log(grillPercent);
        if (grillPercent >= 10  && grillPercent < 15){
         Cooked();
        }
@@ -37,11 +41,16 @@ public class Grillable : MonoBehaviour
     void Cooked()
     {
     borgerText.text = "Cooked";
-    Debug.Log("cooked");
+    burgerRaw.SetActive(false); 
+    burgerCooked.SetActive(true); 
+    burgerBurnt.SetActive(false); 
+    
     }
      void Burnt()
     {
     borgerText.text = "Burnt";
-    Debug.Log("burnt");
+    burgerCooked.SetActive(false);
+    burgerBurnt.SetActive(true);
+    
     }
 }
