@@ -1,29 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class HandPresencePhysics : MonoBehaviour
 {
+    [SerializeField]
+    PID Ycontroller; 
     public Transform target;
     private Rigidbody rb;
     private Collider[] handColliders;
     float differenceStrafe;
     float differenceUp;
     float differenceForward;
-    float correctionForce = 2000;
-    [SerializeField]
-    private float _maxLinearVelocity = 20;
-    [SerializeField]
-    [Range(-10, 10)]
-    private float _AxisP, _AxisI, _AxisD;
-    private PID _yAxisPIDController;
+    float correctionForce = 400;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         handColliders = GetComponentsInChildren<Collider>();
-        rb.maxLinearVelocity = _maxLinearVelocity;
-        _yAxisPIDController = new PID(_AxisP, _AxisI, _AxisD); 
     }
     public void EnableHandCollider()
     {
@@ -43,15 +37,13 @@ public class HandPresencePhysics : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        float inputUp = Ycontroller.Update(Time.fixedDeltaTime, rb.transform.position.y, target.transform.position.y); 
+        rb.AddForce(transform.up * correctionForce * inputUp);
+        Debug.Log(inputUp);
         differenceStrafe = target.transform.position.x - rb.transform.position.x;
         differenceForward = target.transform.position.z - rb.transform.position.z;
-        differenceUp = target.transform.position.y - rb.transform.position.y;
-        float yMoveCorrection = _yAxisPIDController.GetOutput(differenceUp, Time.fixedDeltaTime);
-        Mathf.Clamp(differenceForward, -2,2);
-        Mathf.Clamp(differenceStrafe, -2,2);
-        Mathf.Clamp(differenceUp, -2,2);
-        Debug.Log(differenceForward);
-        rb.AddForce( transform.up * differenceUp * correctionForce* yMoveCorrection);
+
+
         AddForces();
 
         

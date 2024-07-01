@@ -5,76 +5,111 @@ using System.Collections;
 [Serializable]
 public class PID
 {
-    private float _p, _i, _d;
-    private float _kp, _ki, _kd;
-    private float _prevError;
-
-    /// <summary>
-    /// Constant proportion
-    /// </summary>
-    public float Kp
-    {
-        get
-        {
-            return _kp;
-        }
-        set
-        {
-            _kp = value;
-        }
+       public enum DerivativeMeasurement {
+        Velocity,
+        ErrorRateOfChange
     }
 
-    /// <summary>
-    /// Constant integral
-    /// </summary>
-    public float Ki
-    {
-        get
-        {
-            return _ki;
-        }
-        set
-        {
-            _ki = value;
-        }
+    //PID coefficients
+    public float proportionalGain;
+    public float integralGain;
+    public float derivativeGain;
+
+    public float outputMin = -1;
+    public float outputMax = 1;
+    public float integralSaturation;
+    public DerivativeMeasurement derivativeMeasurement;
+
+    public float valueLast;
+    public float errorLast;
+    public float integrationStored;
+    public float velocity;  //only used for the info display
+    public bool derivativeInitialized;
+
+    public void Reset() {
+        derivativeInitialized = false;
     }
 
-    /// <summary>
-    /// Constant derivative
-    /// </summary>
-    public float Kd
-    {
-        get
-        {
-            return _kd;
+    public float Update(float dt, float currentValue, float targetValue) {
+        if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
+
+        float error = targetValue - currentValue;
+
+        //calculate P term
+        float P = proportionalGain * error;
+
+        //calculate I term
+        integrationStored = Mathf.Clamp(integrationStored + (error * dt), -integralSaturation, integralSaturation);
+        float I = integralGain * integrationStored;
+
+        //calculate both D terms
+        float errorRateOfChange = (error - errorLast) / dt;
+        errorLast = error;
+
+        float valueRateOfChange = (currentValue - valueLast) / dt;
+        valueLast = currentValue;
+        velocity = valueRateOfChange;
+
+        //choose D term to use
+        float deriveMeasure = 0;
+
+        if (derivativeInitialized) {
+            if (derivativeMeasurement == DerivativeMeasurement.Velocity) {
+                deriveMeasure = -valueRateOfChange;
+            } else {
+                deriveMeasure = errorRateOfChange;
+            }
+        } else {
+            derivativeInitialized = true;
         }
-        set
-        {
-            _kd = value;
-        }
+
+        float D = derivativeGain * deriveMeasure;
+
+        float result = P + I + D;
+
+        return Mathf.Clamp(result, outputMin, outputMax);
     }
 
-    public PID(float p, float i, float d)
-    {
-        _kp = p;
-        _ki = i;
-        _kd = d;
+    float AngleDifference(float a, float b) {
+        return (a - b + 540) % 360 - 180;   //calculate modular difference, and remap to [-180, 180]
     }
 
-    /// <summary>
-    /// Based on the code from Brian-Stone on the Unity forums
-    /// https://forum.unity.com/threads/rigidbody-lookat-torque.146625/#post-1005645
-    /// </summary>
-    /// <param name="currentError"></param>
-    /// <param name="deltaTime"></param>
-    /// <returns></returns>
-    public float GetOutput(float currentError, float deltaTime)
-    {
-        _p = currentError;
-        _i += _p * deltaTime;
-        _d = (_p - _prevError) / deltaTime;
-        _prevError = currentError;
-        
-        return _p * Kp + _i * Ki + _d * Kd;
+    public float UpdateAngle(float dt, float currentAngle, float targetAngle) {
+        if (dt <= 0) throw new ArgumentOutOfRangeException(nameof(dt));
+        float error = AngleDifference(targetAngle, currentAngle);
+
+        //calculate P term
+        float P = proportionalGain * error;
+
+        //calculate I term
+        integrationStored = Mathf.Clamp(integrationStored + (error * dt), -integralSaturation, integralSaturation);
+        float I = integralGain * integrationStored;
+
+        //calculate both D terms
+        float errorRateOfChange = AngleDifference(error, errorLast) / dt;
+        errorLast = error;
+
+        float valueRateOfChange = AngleDifference(currentAngle, valueLast) / dt;
+        valueLast = currentAngle;
+        velocity = valueRateOfChange;
+
+        //choose D term to use
+        float deriveMeasure = 0;
+
+        if (derivativeInitialized) {
+            if (derivativeMeasurement == DerivativeMeasurement.Velocity) {
+                deriveMeasure = -valueRateOfChange;
+            } else {
+                deriveMeasure = errorRateOfChange;
+            }
+        } else {
+            derivativeInitialized = true;
+        }
+
+        float D = derivativeGain * deriveMeasure;
+
+        float result = P + I + D;
+
+        return Mathf.Clamp(result, outputMin, outputMax);
     }
 }
