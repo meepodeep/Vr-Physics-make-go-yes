@@ -46,7 +46,7 @@ public class HandPresencePhysics : MonoBehaviour
         }
     }
     public void EnableHandColliderDelay(){
-        Invoke("EnableHandCollider", 1f);
+        Invoke("EnableHandCollider", .3f);
     }
     public void DisableHandCollider()
     {
