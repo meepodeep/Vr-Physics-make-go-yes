@@ -1,18 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 public class HandPresencePhysics : MonoBehaviour
 {
     [SerializeField]
     PID Ycontroller; 
+    [SerializeField]
+    PID Xcontroller; 
+    [SerializeField]
+    PID Zcontroller; 
     public Transform target;
     private Rigidbody rb;
     private Collider[] handColliders;
-    float differenceStrafe;
-    float differenceUp;
     float differenceForward;
-    float correctionForce = 400;
+    float correctionForce = 1000;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,14 +41,11 @@ public class HandPresencePhysics : MonoBehaviour
     void FixedUpdate()
     {
         float inputUp = Ycontroller.Update(Time.fixedDeltaTime, rb.transform.position.y, target.transform.position.y); 
-        rb.AddForce(transform.up * correctionForce * inputUp);
-        Debug.Log(inputUp);
-        differenceStrafe = target.transform.position.x - rb.transform.position.x;
-        differenceForward = target.transform.position.z - rb.transform.position.z;
-
-
-        AddForces();
-
+        float inputStrafe = Xcontroller.Update(Time.fixedDeltaTime, rb.transform.position.x, target.transform.position.x);
+        float inputForward = Zcontroller.Update(Time.fixedDeltaTime, rb.transform.position.z, target.transform.position.z);
+        rb.AddForce(0, correctionForce * inputUp, 0, ForceMode.Force);
+        rb.AddForce(correctionForce * inputStrafe, 0 , 0, ForceMode.Force);
+        rb.AddForce(0, 0, correctionForce * inputForward, ForceMode.Force); 
         
         Quaternion rotationDifference = target.rotation * Quaternion.Inverse(transform.rotation);
         rotationDifference.ToAngleAxis(out float angleInDegree, out Vector3 rotationAxis);
@@ -53,10 +53,5 @@ public class HandPresencePhysics : MonoBehaviour
         Vector3 rotationDifferenceInDegree = angleInDegree * rotationAxis;
 
         rb.angularVelocity = (rotationDifferenceInDegree * Mathf.Deg2Rad / Time.fixedDeltaTime);
-    }
-    void AddForces(){
-        rb.AddForce( transform.forward * differenceForward*Time.fixedDeltaTime* correctionForce);
-        
-        rb.AddForce(transform.right * differenceStrafe* Time.fixedDeltaTime * correctionForce);
     }
 }
