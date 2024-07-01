@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4535054528479875457}
   - component: {fileID: 8022011776520593433}
   - component: {fileID: 1417795203324007188}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2298282070545919746}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attach Point Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 1130609603822858336}
   - component: {fileID: 3306014640391451744}
   - component: {fileID: 3180870624585977774}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 8249124982219439411}
   - component: {fileID: 6957880117508311552}
   - component: {fileID: 2104081741944508738}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cooked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 5841328929478425623}
   - component: {fileID: 2705482803423769189}
   - component: {fileID: 5893204696066057944}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Raw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 8075368898695863766}
   - component: {fileID: 3413269862921542802}
   - component: {fileID: 6836299027279327262}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Burger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 8215182843735688319}
   - component: {fileID: 8021661581068373000}
   - component: {fileID: 8399529600258843002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   - component: {fileID: 8796901938905935496}
   - component: {fileID: 1247796214300691537}
   - component: {fileID: 7299716750637561146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Burnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -856,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6555848711660832998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Attach Point RIght
   m_TagString: Untagged
   m_Icon: {fileID: 0}

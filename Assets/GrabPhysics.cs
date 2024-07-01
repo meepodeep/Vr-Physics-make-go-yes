@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class GrabPhysics : MonoBehaviour
 {
-    public InputActionProperty grabInputSource; 
+    public InputActionProperty grabInputSource;
     public float radius = 0.1f;
     public LayerMask grabLayer;
+
     private FixedJoint fixedJoint;
     private bool isGrabbing = false;
 
@@ -14,21 +16,25 @@ public class GrabPhysics : MonoBehaviour
     void FixedUpdate()
     {
         bool isGrabButtonPressed = grabInputSource.action.ReadValue<float>() > 0.1f;
-        if(isGrabButtonPressed && !isGrabbing)
+
+        if (isGrabButtonPressed && !isGrabbing)
         {
-            Collider[] nearbyColliders = Physics.OverlapSphere(transform.position,radius,grabLayer, QueryTriggerInteraction.Ignore); 
-            if(nearbyColliders.Length >0)
+            Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, radius, grabLayer, QueryTriggerInteraction.Ignore);
+
+            if(nearbyColliders.Length > 0)
             {
                 Rigidbody nearbyRigidbody = nearbyColliders[0].attachedRigidbody;
 
                 fixedJoint = gameObject.AddComponent<FixedJoint>();
                 fixedJoint.autoConfigureConnectedAnchor = false;
 
-                if(nearbyRigidbody)
+                if (nearbyRigidbody)
                 {
                     fixedJoint.connectedBody = nearbyRigidbody;
-                    fixedJoint.connectedAnchor = nearbyRigidbody.transform.InverseTransformDirection(transform.position); 
-                }else{
+                    fixedJoint.connectedAnchor = nearbyRigidbody.transform.InverseTransformPoint(transform.position);
+                }
+                else
+                {
                     fixedJoint.connectedAnchor = transform.position;
                 }
 
@@ -37,11 +43,11 @@ public class GrabPhysics : MonoBehaviour
         }
         else if(!isGrabButtonPressed && isGrabbing)
         {
-            isGrabbing = false; 
-            
-            if(fixedJoint)
+            isGrabbing = false;
+
+            if (fixedJoint)
             {
-                Destroy(fixedJoint); 
+                Destroy(fixedJoint);
             }
         }
     }
