@@ -37,9 +37,8 @@ public class GrabPhysics : MonoBehaviour
                 {
                     fixedJoint.connectedAnchor = transform.position;
                 }
-
                 isGrabbing = true;
-            }
+                }
         }
         else if(!isGrabButtonPressed && isGrabbing)
         {

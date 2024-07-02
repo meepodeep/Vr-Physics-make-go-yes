@@ -19,7 +19,6 @@ public class Grillable : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(grillPercent);
        if (grillPercent >= 10  && grillPercent < 15){
         Cooked();
        }
