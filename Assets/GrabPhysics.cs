@@ -27,7 +27,7 @@ public class GrabPhysics : MonoBehaviour
 
                 fixedJoint = gameObject.AddComponent<FixedJoint>();
                 fixedJoint.autoConfigureConnectedAnchor = false;
-
+                fixedJoint.breakForce = 4000; 
                 if (nearbyRigidbody)
                 {
                     fixedJoint.connectedBody = nearbyRigidbody;
