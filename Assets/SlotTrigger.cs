@@ -8,6 +8,6 @@ public class SlotTrigger : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        other.tag = ObjTag; 
+        ObjTag = other.tag; 
     }
 }

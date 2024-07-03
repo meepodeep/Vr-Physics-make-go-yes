@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem; 
   
 public class PlateManager : MonoBehaviour
 {
     [SerializeField]
     public SlotTrigger[] slots;
     public float points;
-    public string[] RequestedTag;
+    private string[] RequestedTag;
     // Start is called before the first frame update
     void Start()
     {
-        slots = new SlotTrigger[10];
         RequestedTag = new string[10];
         RequestedTag[0] = "TopBun"; 
         RequestedTag[1] = "Onion"; 
@@ -23,8 +23,9 @@ public class PlateManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void RingUp()
     {
+        
         if (slots[0].ObjTag == RequestedTag[0])
         {
             points += 1;
@@ -45,7 +46,7 @@ public class PlateManager : MonoBehaviour
         {
             points += 1;
         }
-        
+        Debug.Log(points); 
         
     }
 

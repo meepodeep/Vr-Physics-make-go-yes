@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 2158398400970500419}
   m_Layer: 0
   m_Name: Onion
-  m_TagString: Untagged
+  m_TagString: Onion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

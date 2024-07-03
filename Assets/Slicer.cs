@@ -9,17 +9,12 @@ using UnityEngine.SocialPlatforms;
 
 public class Slicer : MonoBehaviour
 {
-    // all of the foods sliced//
-    public GameObject OnionCut;
-    //public GameObject BurgerCut;
-    //public GameObject PotatoCut;
-    public GameObject LettuceCut;
+
     private Vector3 SpawnVector; 
+    [SerializeField]
     public GameObject[] foodsCut; 
     void Start(){
-        foodsCut = new GameObject[10];
-        foodsCut[0] = LettuceCut;
-        foodsCut[1] = OnionCut;
+
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -27,12 +22,12 @@ public class Slicer : MonoBehaviour
         
 
         switch(other.tag){
-            case "Onion":
+            case "OnionUncut":
             Destroy(other.gameObject);
             Instantiate(foodsCut[1], SpawnVector, Quaternion.identity); 
             Instantiate(foodsCut[1], SpawnVector, Quaternion.identity);
             break;
-            case "Lettuce":
+            case "LettuceUncut":
             Destroy(other.gameObject);
             Instantiate(foodsCut[0], SpawnVector, Quaternion.identity); 
             Instantiate(foodsCut[0], SpawnVector, Quaternion.identity); 

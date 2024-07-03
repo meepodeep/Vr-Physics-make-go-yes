@@ -8,6 +8,10 @@ TagManager:
   - Grill
   - Onion
   - Lettuce
+  - Burger
+  - TopBun
+  - BottomBun
+  - LettuceUncut
   layers:
   - Default
   - TransparentFX
