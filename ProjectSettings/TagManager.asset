@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Meteor
   - Grill
+  - Onion
+  - Lettuce
   layers:
   - Default
   - TransparentFX
