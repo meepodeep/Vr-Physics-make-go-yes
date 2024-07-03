@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem; 
-  
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+
 public class PlateManager : MonoBehaviour
 {
     [SerializeField]
     public SlotTrigger[] slots;
     public float points;
     private string[] RequestedTag;
+    private bool implode;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +24,9 @@ public class PlateManager : MonoBehaviour
         RequestedTag[4] = "BottomBun";
     }
 
-    // Update is called once per frame
     public void RingUp()
     {
-        
+        if (slots[0].canTake == true || slots[1].canTake == true || slots[2].canTake == true || slots[3].canTake == true || slots[4].canTake == true){
         if (slots[0].ObjTag == RequestedTag[0])
         {
             points += 1;
@@ -46,8 +47,15 @@ public class PlateManager : MonoBehaviour
         {
             points += 1;
         }
+        slots[0].canTake = false; 
+        slots[1].canTake = false; 
+        slots[2].canTake = false; 
+        slots[3].canTake = false; 
+        slots[4].canTake = false; 
+        }
         Debug.Log(points); 
         
     }
 
 }
+

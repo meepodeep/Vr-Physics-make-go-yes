@@ -12,6 +12,7 @@ TagManager:
   - TopBun
   - BottomBun
   - LettuceUncut
+  - Plate
   layers:
   - Default
   - TransparentFX

@@ -26,18 +26,20 @@ public class PhysicsButton : MonoBehaviour
         distance = buttonTop.position.y-buttonBase.position.y;
         if(distance <= threshold){
             Pressed();
+            onPressed.Invoke();
         }else{
+            onReleased.Invoke();
             Released();
         }
     }
 
     void Pressed(){
-        onPressed.Invoke();
+        
         isPressed = true;
     }
 
     void Released(){
-        onReleased.Invoke();
+        
         isPressed = false;
     }
 }
