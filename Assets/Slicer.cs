@@ -22,15 +22,15 @@ public class Slicer : MonoBehaviour
         
 
         switch(other.tag){
-            case "OnionUncut":
-            Destroy(other.gameObject);
-            Instantiate(foodsCut[1], SpawnVector, Quaternion.identity); 
-            Instantiate(foodsCut[1], SpawnVector, Quaternion.identity);
-            break;
             case "LettuceUncut":
             Destroy(other.gameObject);
             Instantiate(foodsCut[0], SpawnVector, Quaternion.identity); 
             Instantiate(foodsCut[0], SpawnVector, Quaternion.identity); 
+            break;
+            case "OnionUncut":
+            Destroy(other.gameObject);
+            Instantiate(foodsCut[1], SpawnVector, Quaternion.identity); 
+            Instantiate(foodsCut[1], SpawnVector, Quaternion.identity);
             break;
 
         }

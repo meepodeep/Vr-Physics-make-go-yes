@@ -13,6 +13,7 @@ TagManager:
   - BottomBun
   - LettuceUncut
   - Plate
+  - OnionUncut
   layers:
   - Default
   - TransparentFX
