@@ -12,7 +12,7 @@ public class PhysicsRig : MonoBehaviour
     public ConfigurableJoint leftHandJoint;
     public ConfigurableJoint rightHandJoint;
     
-    public float bodyHeightMin = 0.5f;
+    public float bodyHeightMin = .5f;
     public float bodyHeightMax = 2;
 
     // Update is called once per frame
