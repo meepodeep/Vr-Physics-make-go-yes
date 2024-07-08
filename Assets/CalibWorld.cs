@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem; 
 public class CalibWorld : MonoBehaviour
@@ -10,27 +11,23 @@ public class CalibWorld : MonoBehaviour
     public InputActionProperty Calib; 
     public Transform AgainstTheKitchenFloor; 
     float PlayerHeightFromCounter = 1f; 
-    bool isCalibButtonPressed = false;
+    bool isCalibButtonPressed = true;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         
-        if (isCalibButtonPressed == true){
+        if (isCalibButtonPressed == true && Calib.action.ReadValue<float>() > 0.1f){
             Calibrate();
-            isCalibButtonPressed = false;
-        }else if(isCalibButtonPressed == false){
-            isCalibButtonPressed = Calib.action.ReadValue<float>() > 0.1f;
+        }
+        if (Calib.action.ReadValue<float>() < 0.1f){
+            isCalibButtonPressed = false; 
         }
     }
     void Calibrate(){
         PlayerHeightFromCounter = PlayerCamera.transform.position.y - AgainstTheKitchenFloor.transform.position.y; 
-        World.velocity = new Vector3(0, PlayerHeightFromCounter, 0); 
-        
+        World.transform.position = new Vector3(0, PlayerHeightFromCounter, 0); 
+        isCalibButtonPressed = false; 
     }
 }
