@@ -14,6 +14,8 @@ TagManager:
   - LettuceUncut
   - Plate
   - OnionUncut
+  - PlateReal
+  - Icon
   layers:
   - Default
   - TransparentFX

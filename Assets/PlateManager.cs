@@ -38,7 +38,7 @@ public class PlateManager : MonoBehaviour
     {
         
         if (IsPressed == true && canMove == true){
-        move = -.01f;
+        move = -.1f;
         Scanner.AddForce(transform.up * move);
         }else{
             move = 0f;
@@ -56,6 +56,8 @@ public class PlateManager : MonoBehaviour
         ObjectNumber = 0;
         canMove = false; 
         RingUp();
+        order.DisplayOrder();
+        order.DeleteOldOrder();
         ObjTag[0] = "nein";
         ObjTag[1] = "nein";
         ObjTag[2] = "nein";
@@ -86,7 +88,7 @@ public class PlateManager : MonoBehaviour
             ObjTag[5] = other.tag;
             break;
         }
-        
+        Destroy(other.gameObject); 
         }
         }
     }
@@ -98,8 +100,9 @@ public class PlateManager : MonoBehaviour
     }
     public void RingUp()
     {
-
-        if (ObjTag[0] == RequestedTag[order.Index[0]])
+        if (ObjTag[5] == RequestedTag[5])
+        {
+            if (ObjTag[0] == RequestedTag[order.Index[0]])
         {
             points += 1;
         }
@@ -119,11 +122,11 @@ public class PlateManager : MonoBehaviour
         {
             points += 1;
         }
-        if (ObjTag[5] == RequestedTag[5])
-        {
-            points += 1;
         }
+        
+
         Debug.Log(points); 
+        
     }
 
 }

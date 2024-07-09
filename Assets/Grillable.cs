@@ -5,10 +5,12 @@ using TMPro;
 
 public class Grillable : MonoBehaviour
 {
+    public GameObject Cooking;
     float grillPercent;
     public GameObject burgerRaw; 
     public GameObject burgerCooked;
     public GameObject burgerBurnt;
+    public GameObject burger; 
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +22,11 @@ public class Grillable : MonoBehaviour
     {
        if (grillPercent >= 10  && grillPercent < 15){
         Cooked();
+        burger.tag = "Burger";
        }
         if (grillPercent >= 15){
         Burnt();
+        burger.tag = "Untagged";
        }
     }
      void OnTriggerStay(Collider other)
@@ -31,8 +35,20 @@ public class Grillable : MonoBehaviour
             {   
                 Cook();
             }
+            if(other.gameObject.CompareTag("Untagged"))
+            {
+                Uncook();
+            }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        Uncook();
+    }
+    void Uncook(){
+        Cooking.SetActive(false);
     }
     void Cook(){
+        Cooking.SetActive(true);
         Mathf.Clamp(grillPercent,0f, 15f);
         grillPercent += 1f * Time.deltaTime;
     }
