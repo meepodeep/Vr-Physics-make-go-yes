@@ -44,6 +44,7 @@ public class PlateManager : MonoBehaviour
         Timer.fillAmount = OrderTimer;
         OrderTimer -= .01f * Time.fixedDeltaTime; 
         if(OrderTimer <= 0){
+            FindObjectOfType<AudioManager>().Play("Ring");
             points = points - 5;
             NewOrder();
         }
@@ -64,6 +65,7 @@ public class PlateManager : MonoBehaviour
         if (other.gameObject.CompareTag("Plate")){
             NewOrder();
             OrderTimer = 1;
+            FindObjectOfType<AudioManager>().Play("Ding");
         }else{
         if(IsPressed == true){
         ObjectNumber +=1;

@@ -40,17 +40,27 @@ public class Grillable : MonoBehaviour
                 Uncook();
             }
     }
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Grill"))
+        {   
+            FindObjectOfType<AudioManager>().Play("BurgerCook");
+        }
+    }
     void OnTriggerExit(Collider other)
     {
+        FindObjectOfType<AudioManager>().Stop("BurgerCook");
         Uncook();
     }
     void Uncook(){
         Cooking.SetActive(false);
     }
     void Cook(){
+        
         Cooking.SetActive(true);
         Mathf.Clamp(grillPercent,0f, 15f);
         grillPercent += 1f * Time.deltaTime;
+        
     }
     void Cooked()
     {
