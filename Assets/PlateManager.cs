@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class PlateManager : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class PlateManager : MonoBehaviour
     bool canMove = true;
     float move;
     public Order order;
+    float OrderTimer = 1;
+    [SerializeField] private Image Timer = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +39,11 @@ public class PlateManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+        Timer.fillAmount = OrderTimer;
+        OrderTimer -= .03f * Time.fixedDeltaTime; 
+        if(OrderTimer <= 0){
+            NewOrder();
+        }
         if (IsPressed == true && canMove == true){
         move = -.1f;
         Scanner.AddForce(transform.up * move);
@@ -52,19 +59,8 @@ public class PlateManager : MonoBehaviour
     {
         
         if (other.gameObject.CompareTag("Plate")){
-        
-        ObjectNumber = 0;
-        canMove = false; 
-        RingUp();
-        order.DisplayOrder();
-        order.DeleteOldOrder();
-        ObjTag[0] = "nein";
-        ObjTag[1] = "nein";
-        ObjTag[2] = "nein";
-        ObjTag[3] = "nein";
-        ObjTag[4] = "nein";
-        ObjTag[5] = "nein";
-        ObjTag[6] = "nein";
+            NewOrder();
+            OrderTimer = 1;
         }else{
         if(IsPressed == true){
         ObjectNumber +=1;
@@ -97,6 +93,23 @@ public class PlateManager : MonoBehaviour
     }
     public void UnPress(){
         IsPressed = false;
+    }
+    public void NewOrder()
+    {
+        
+        RingUp();
+        OrderTimer = 1;
+        ObjectNumber = 0;
+        canMove = false; 
+        order.DeleteOldOrder();
+        order.DisplayOrder();
+        ObjTag[0] = "nein";
+        ObjTag[1] = "nein";
+        ObjTag[2] = "nein";
+        ObjTag[3] = "nein";
+        ObjTag[4] = "nein";
+        ObjTag[5] = "nein";
+
     }
     public void RingUp()
     {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Order : MonoBehaviour
 {
@@ -19,10 +20,6 @@ public class Order : MonoBehaviour
         DisplayOrder();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
     public void DisplayOrder(){
         Index[0] = 0;
         Index[1] = Mathf.Clamp(Random.Range(0,4), 1, 3);
