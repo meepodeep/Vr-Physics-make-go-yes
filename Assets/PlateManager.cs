@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 
@@ -11,18 +12,18 @@ public class PlateManager : MonoBehaviour
     public float points;
     private string[] RequestedTag;
     private bool implode;
-    bool IsPressed = false; 
+    bool IsPressed = true; 
     public string[] ObjTag; 
     public bool canTake;
     float ObjectNumber; 
     [SerializeField]
-    float goDown;
-    public Transform ResetPoint;
-    public Transform Scanner; 
+    public Rigidbody Scanner; 
+    public Transform ScannerTransform;
+    bool canMove = true;
+    float move;
     // Start is called before the first frame update
     void Start()
     {
-        goDown = ResetPoint.position.z; 
         RequestedTag = new string[10];
         RequestedTag[0] = "TopBun"; 
         RequestedTag[1] = "Onion"; 
@@ -31,25 +32,26 @@ public class PlateManager : MonoBehaviour
         RequestedTag[4] = "BottomBun";
         ObjTag = new string[10]; 
     }
-    void Update()
+    void FixedUpdate()
     {
-        if (IsPressed == true){
-            goDown -= .1f; 
-            Scanner.Translate(0,0,goDown); 
+        if (IsPressed == true && canMove == true){
+        move = -.01f;
+        Scanner.AddForce(transform.up * move);
         }else{
-            goDown = ResetPoint.position.z; 
+            move = 0f;
+            Scanner.velocity = new Vector3(0f, 0f, 0f);
+            ScannerTransform.localPosition = new Vector3(0,0,0);
+            canMove = true; 
         }
     }
-    public void Press(){
-        IsPressed = true;
-    }
-    public void UnPress(){
-        IsPressed = false;
-    }
-
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "plate"){
+        Debug.Log("plate");
+        if (other.gameObject.CompareTag("Plate")){
+        
+        ObjectNumber = 0;
+        canMove = false; 
+        }else{
         if(IsPressed == true){
         ObjectNumber +=1;
         switch(ObjectNumber){
@@ -70,9 +72,13 @@ public class PlateManager : MonoBehaviour
             break;
         }
         }
-        }else{
-            ObjectNumber = 0;
         }
+    }
+    public void Press(){
+    IsPressed = true;
+    }
+    public void UnPress(){
+        IsPressed = true;
     }
     public void RingUp()
     {
