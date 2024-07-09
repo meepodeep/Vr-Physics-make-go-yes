@@ -21,14 +21,15 @@ public class PlateManager : MonoBehaviour
     public Transform ScannerTransform;
     bool canMove = true;
     float move;
+    public Order order;
     // Start is called before the first frame update
     void Start()
     {
         RequestedTag = new string[10];
         RequestedTag[0] = "TopBun"; 
         RequestedTag[1] = "Onion"; 
-        RequestedTag[2] = "Lettuce"; 
-        RequestedTag[3] = "Burger";
+        RequestedTag[2] = "Burger"; 
+        RequestedTag[3] = "Lettuce";
         RequestedTag[4] = "BottomBun";
         RequestedTag[5] = "PlateReal";
         ObjTag = new string[10]; 
@@ -85,7 +86,7 @@ public class PlateManager : MonoBehaviour
             ObjTag[5] = other.tag;
             break;
         }
-        Destroy(other.gameObject.transform.parent.gameObject);
+        
         }
         }
     }
@@ -98,23 +99,23 @@ public class PlateManager : MonoBehaviour
     public void RingUp()
     {
 
-        if (ObjTag[0] == RequestedTag[0])
+        if (ObjTag[0] == RequestedTag[order.Index[0]])
         {
             points += 1;
         }
-         if (ObjTag[1] == RequestedTag[1])
+         if (ObjTag[1] == RequestedTag[order.Index[1]])
         {
             points += 1;
         }
-         if (ObjTag[2] == RequestedTag[2])
+         if (ObjTag[2] == RequestedTag[order.Index[2]])
         {
             points += 1;
         }
-         if (ObjTag[3] == RequestedTag[3])
+         if (ObjTag[3] == RequestedTag[order.Index[3]])
         {
             points += 1;
         }
-        if (ObjTag[4] == RequestedTag[4])
+        if (ObjTag[4] == RequestedTag[order.Index[4]])
         {
             points += 1;
         }
