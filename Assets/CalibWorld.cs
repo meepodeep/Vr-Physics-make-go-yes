@@ -17,12 +17,12 @@ public class CalibWorld : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (isCalibButtonPressed == true && Calib.action.ReadValue<float>() > 0.1f){
             Calibrate();
         }
-        if (Calib.action.ReadValue<float>() < 0.1f){
-            isCalibButtonPressed = false; 
+         if (isCalibButtonPressed == false && Calib.action.ReadValue<float>() < 0.1f){
+            isCalibButtonPressed = true; 
         }
     }
     void Calibrate(){

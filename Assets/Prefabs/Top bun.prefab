@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4865381871264325480}
   - component: {fileID: 3195456089113456212}
   - component: {fileID: 4441493232933027130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Top bun
   m_TagString: TopBun
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 1.423, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.099999994, y: 0.10000001, z: 0.10000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

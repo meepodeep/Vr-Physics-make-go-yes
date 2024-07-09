@@ -6,7 +6,6 @@ using TMPro;
 public class Grillable : MonoBehaviour
 {
     float grillPercent;
-    public TextMeshProUGUI borgerText;
     public GameObject burgerRaw; 
     public GameObject burgerCooked;
     public GameObject burgerBurnt;
@@ -39,7 +38,6 @@ public class Grillable : MonoBehaviour
     }
     void Cooked()
     {
-    borgerText.text = "Cooked";
     burgerRaw.SetActive(false); 
     burgerCooked.SetActive(true); 
     burgerBurnt.SetActive(false); 
@@ -47,7 +45,6 @@ public class Grillable : MonoBehaviour
     }
      void Burnt()
     {
-    borgerText.text = "Burnt";
     burgerCooked.SetActive(false);
     burgerBurnt.SetActive(true);
     

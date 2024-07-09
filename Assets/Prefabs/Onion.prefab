@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1521127540119722202}
   - component: {fileID: 201873035772396483}
   - component: {fileID: 3319766779852391388}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Onion.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1855036067317748289}
   - component: {fileID: 1369957826173890659}
   - component: {fileID: 1748288290869785251}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Onion.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 5310170280515648093}
   - component: {fileID: 5130238690294469136}
   - component: {fileID: 2158398400970500419}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Onion
   m_TagString: Onion
   m_Icon: {fileID: 0}
@@ -196,8 +196,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.5904338, y: 0.3135691, z: 0.39552417, w: 0.6297802}
   m_LocalPosition: {x: 0.22394767, y: 0.32099867, z: 0.32973364}
-  m_LocalScale: {x: 0.20928296, y: 0.20928298, z: 0.99999994}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.022, y: 0.022, z: 0.10512083}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1855036067317748289}
   - {fileID: 1521127540119722202}

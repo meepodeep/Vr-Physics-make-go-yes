@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3979555794693388493}
   - component: {fileID: 3333195888476232202}
   - component: {fileID: 7981635525505460703}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bottom Bun
   m_TagString: BottomBun
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.33417466, y: 0.62315917, z: 0.6231591, w: 0.3341747}
   m_LocalPosition: {x: -0.03943973, y: 0.39228782, z: 0.033257365}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.09999998, z: 0.100000024}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
