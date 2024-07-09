@@ -7,6 +7,7 @@ using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlateManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlateManager : MonoBehaviour
     public Order order;
     float OrderTimer = 1;
     [SerializeField] private Image Timer = null;
+    [SerializeField] TextMeshProUGUI PointText;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +42,9 @@ public class PlateManager : MonoBehaviour
     void FixedUpdate()
     {
         Timer.fillAmount = OrderTimer;
-        OrderTimer -= .03f * Time.fixedDeltaTime; 
+        OrderTimer -= .01f * Time.fixedDeltaTime; 
         if(OrderTimer <= 0){
+            points = points - 5;
             NewOrder();
         }
         if (IsPressed == true && canMove == true){
@@ -115,29 +118,41 @@ public class PlateManager : MonoBehaviour
     {
         if (ObjTag[5] == RequestedTag[5])
         {
-            if (ObjTag[0] == RequestedTag[order.Index[0]])
+            if (ObjTag[0] == RequestedTag[0])
         {
             points += 1;
+        }else{
+            points -= 1;
         }
          if (ObjTag[1] == RequestedTag[order.Index[1]])
         {
             points += 1;
+        }else{
+            points -= 1;
         }
          if (ObjTag[2] == RequestedTag[order.Index[2]])
         {
             points += 1;
+        }else{
+            points -= 1;
         }
          if (ObjTag[3] == RequestedTag[order.Index[3]])
         {
             points += 1;
+        }else{
+            points -= 1;
         }
         if (ObjTag[4] == RequestedTag[order.Index[4]])
         {
             points += 1;
+        }else{
+            points -= 1;
         }
+        }else{
+            points -= 5;
         }
         
-
+        PointText.text = "Points:" + points.ToString();
         Debug.Log(points); 
         
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9181526707843335973}
   - component: {fileID: 2902960344807630061}
   - component: {fileID: 3471237219926547539}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plate
   m_TagString: PlateReal
   m_Icon: {fileID: 0}
