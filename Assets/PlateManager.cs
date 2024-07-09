@@ -27,6 +27,8 @@ public class PlateManager : MonoBehaviour
     float OrderTimer = 1;
     [SerializeField] private Image Timer = null;
     [SerializeField] TextMeshProUGUI PointText;
+    [SerializeField] TextMeshProUGUI QuotaText;
+    float quota = 40;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,10 @@ public class PlateManager : MonoBehaviour
     }
     void FixedUpdate()
     {
+        QuotaText.text = "quota:" + quota.ToString();
+        if(points == quota){
+            Debug.Log("win"); 
+        }
         Timer.fillAmount = OrderTimer;
         OrderTimer -= .01f * Time.fixedDeltaTime; 
         if(OrderTimer <= 0){
