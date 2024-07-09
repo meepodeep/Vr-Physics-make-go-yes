@@ -30,10 +30,12 @@ public class PlateManager : MonoBehaviour
         RequestedTag[2] = "Lettuce"; 
         RequestedTag[3] = "Burger";
         RequestedTag[4] = "BottomBun";
+        RequestedTag[5] = "PlateReal";
         ObjTag = new string[10]; 
     }
     void FixedUpdate()
     {
+        
         if (IsPressed == true && canMove == true){
         move = -.01f;
         Scanner.AddForce(transform.up * move);
@@ -44,13 +46,22 @@ public class PlateManager : MonoBehaviour
             canMove = true; 
         }
     }
+    
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("plate");
+        
         if (other.gameObject.CompareTag("Plate")){
         
         ObjectNumber = 0;
         canMove = false; 
+        RingUp();
+        ObjTag[0] = "nein";
+        ObjTag[1] = "nein";
+        ObjTag[2] = "nein";
+        ObjTag[3] = "nein";
+        ObjTag[4] = "nein";
+        ObjTag[5] = "nein";
+        ObjTag[6] = "nein";
         }else{
         if(IsPressed == true){
         ObjectNumber +=1;
@@ -70,7 +81,11 @@ public class PlateManager : MonoBehaviour
             case 5:
             ObjTag[4] = other.tag;
             break;
+            case 6:
+            ObjTag[5] = other.tag;
+            break;
         }
+        Destroy(other.gameObject.transform.parent.gameObject);
         }
         }
     }
@@ -78,7 +93,7 @@ public class PlateManager : MonoBehaviour
     IsPressed = true;
     }
     public void UnPress(){
-        IsPressed = true;
+        IsPressed = false;
     }
     public void RingUp()
     {
@@ -100,6 +115,10 @@ public class PlateManager : MonoBehaviour
             points += 1;
         }
         if (ObjTag[4] == RequestedTag[4])
+        {
+            points += 1;
+        }
+        if (ObjTag[5] == RequestedTag[5])
         {
             points += 1;
         }
