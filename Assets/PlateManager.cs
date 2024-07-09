@@ -26,9 +26,16 @@ public class PlateManager : MonoBehaviour
     public Order order;
     float OrderTimer = 1;
     [SerializeField] private Image Timer = null;
+    [SerializeField] private Image TimerBig = null;
     [SerializeField] TextMeshProUGUI PointText;
     [SerializeField] TextMeshProUGUI QuotaText;
-    float quota = 40;
+    [HideInInspector] public float quota = 40;
+    [HideInInspector] public float missedOrders;
+    [HideInInspector] public float fulfilledOrders;
+    public bool quotaMet;
+    float gameTimer = 100;
+    public GameObject endScreen;
+    public GameObject mainScreen;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,17 +48,31 @@ public class PlateManager : MonoBehaviour
         RequestedTag[5] = "PlateReal";
         ObjTag = new string[10]; 
     }
+    void Update(){
+        gameTimer -= .1f*Time.deltaTime;
+        TimerBig.fillAmount = gameTimer/100f;
+        Debug.Log(gameTimer);
+        if(gameTimer <= 0f){
+            endScreen.SetActive(true); 
+            mainScreen.SetActive(false);
+            order.DeleteOldOrder();
+            
+        }
+    }
     void FixedUpdate()
     {
         QuotaText.text = "quota:" + quota.ToString();
-        if(points == quota){
-            Debug.Log("win"); 
+        if(points >= quota){
+            quotaMet = true;
+        }else{
+            quotaMet = false; 
         }
         Timer.fillAmount = OrderTimer;
         OrderTimer -= .01f * Time.fixedDeltaTime; 
         if(OrderTimer <= 0){
             FindObjectOfType<AudioManager>().Play("Ring");
             points = points - 5;
+            missedOrders +=1;
             NewOrder();
         }
         if (IsPressed == true && canMove == true){
@@ -159,7 +180,7 @@ public class PlateManager : MonoBehaviour
         }else{
             points -= 5;
         }
-        
+        fulfilledOrders += 1; 
         PointText.text = "Points:" + points.ToString();
         Debug.Log(points); 
         
