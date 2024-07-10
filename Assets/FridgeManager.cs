@@ -11,16 +11,15 @@ public class FridgeManager : MonoBehaviour
     bool canSpawn = false; 
     GameObject[] foodsInFridge;
     GameObject foodInstantiated;
-    int foodNumber = 0;
+    int foodNumber = 1;
     // Start is called before the first frame update
     void Start()
     {
-        foodsInFridge = new GameObject[50];
+        foodsInFridge = new GameObject[500];
     }
     void OnTriggerStay(Collider other)
     {
         if(fc.doorClosed == true){
-        Debug.Log(foodsInFridge[foodNumber]);
         foodsInFridge[foodNumber] = other.gameObject; 
         foodNumber +=1;
         }

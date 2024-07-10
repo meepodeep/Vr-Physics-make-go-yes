@@ -34,11 +34,10 @@ public class Order : MonoBehaviour
     }
     public void DeleteOldOrder(){
         icons = GameObject.FindGameObjectsWithTag("Icon");
-        Destroy(icons[0]);
-        Destroy(icons[1]);
-        Destroy(icons[2]);
-        Destroy(icons[3]);
-        Destroy(icons[4]);
+            foreach (GameObject icon in icons)
+            {
+                Destroy(icon);
+            }
 
     }
 }
