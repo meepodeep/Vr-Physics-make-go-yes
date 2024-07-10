@@ -16,6 +16,8 @@ TagManager:
   - OnionUncut
   - PlateReal
   - Icon
+  - Fridge
+  - FoodStack
   layers:
   - Default
   - TransparentFX
