@@ -14,7 +14,7 @@ public class PhysicsButton : MonoBehaviour
     public UnityEvent onPressed;
     public UnityEvent onReleased;
     private float distance;
-    public float threshold = 0.05f;
+    float threshold = 0.17f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +24,8 @@ public class PhysicsButton : MonoBehaviour
    void FixedUpdate()
     {
         distance = buttonTop.localPosition.y-buttonBase.localPosition.y;
-        if(distance <= threshold){
+        Debug.Log(distance);
+        if(distance <= -threshold){
             Pressed();
             onPressed.Invoke();
         }else{
