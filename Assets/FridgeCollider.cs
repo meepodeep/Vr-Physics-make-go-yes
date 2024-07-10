@@ -13,6 +13,7 @@ public class FridgeCollider : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if(other.CompareTag("Fridge")){
             doorClosed = true;
+            Debug.Log("Fridge");
         }
     }
         void OnTriggerExit(Collider other){
