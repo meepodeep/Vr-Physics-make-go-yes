@@ -51,12 +51,10 @@ public class PlateManager : MonoBehaviour
     void Update(){
         gameTimer -= .1f*Time.deltaTime;
         TimerBig.fillAmount = gameTimer/100f;
-        Debug.Log(gameTimer);
         if(gameTimer <= 0f){
             endScreen.SetActive(true); 
             mainScreen.SetActive(false);
             order.DeleteOldOrder();
-            
         }
     }
     void FixedUpdate()
@@ -68,7 +66,7 @@ public class PlateManager : MonoBehaviour
             quotaMet = false; 
         }
         Timer.fillAmount = OrderTimer;
-        OrderTimer -= .01f * Time.fixedDeltaTime; 
+        OrderTimer -= .005f * Time.fixedDeltaTime; 
         if(OrderTimer <= 0){
             FindObjectOfType<AudioManager>().Play("Ring");
             points = points - 5;
@@ -130,6 +128,11 @@ public class PlateManager : MonoBehaviour
     {
         
         RingUp();
+        StartCoroutine(DelayReset());
+
+    }
+    public IEnumerator DelayReset(){
+        yield return new WaitForSeconds(.1f);
         OrderTimer = 1;
         ObjectNumber = 0;
         canMove = false; 
