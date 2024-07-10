@@ -24,7 +24,6 @@ public class PhysicsButton : MonoBehaviour
    void FixedUpdate()
     {
         distance = buttonTop.localPosition.z-buttonBase.localPosition.z;
-        Debug.Log(distance);
         if(distance <= threshold){
             Pressed();
             onPressed.Invoke();

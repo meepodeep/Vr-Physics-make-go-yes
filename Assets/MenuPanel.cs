@@ -16,7 +16,7 @@ public class MenuPanel : MonoBehaviour
     public UnityEvent TutorialOnReleased;
     public UnityEvent ExitOnPressed;
     public UnityEvent ExitOnReleased;
-    float threshold = -0.06f;
+    float threshold =  -0.0000003875605f;
     private float TutorialDistance;
     private float PlayDistance;
     private float ExitDistance;
@@ -30,22 +30,27 @@ public class MenuPanel : MonoBehaviour
     void Update()
     {
         TutorialDistance = buttonTopTutorial.localPosition.z-buttonBase.localPosition.z;
-        if(TutorialDistance >= threshold){
-            TutorialOnPressed.Invoke();
-        }else{
+        if(TutorialDistance <= threshold){
             TutorialOnReleased.Invoke();
-        }
-        PlayDistance = buttonTopPlay.localPosition.z-buttonBase.localPosition.z;
-        if(PlayDistance >= threshold){
-            PlayOnPressed.Invoke();
         }else{
+            TutorialOnPressed.Invoke();
+        }
+        Debug.Log(PlayDistance);
+        PlayDistance = buttonTopPlay.localPosition.z-buttonBase.localPosition.z;
+        if(PlayDistance <= threshold){
             PlayOnReleased.Invoke();
+        }else{
+            PlayOnPressed.Invoke();
         }
         ExitDistance = buttonTopExit.localPosition.z-buttonBase.localPosition.z;
-        if(ExitDistance >= threshold){
-            ExitOnPressed.Invoke();
-        }else{
+        if(ExitDistance <= threshold){
             ExitOnReleased.Invoke();
+        }else{
+            ExitOnPressed.Invoke();
         }
+    }
+    public void Implode(){
+        Application.Quit();
+        Debug.Log("Implode");
     }
 }
