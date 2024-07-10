@@ -31,9 +31,12 @@ public class PlateManagerTutorial : MonoBehaviour
     public GameObject[] icons;
     int TutorialStep = 0;
     [SerializeField] TextMeshProUGUI Instructions;
+    public GameObject button;
+    public GameObject plate; 
     // Start is called before the first frame update
     void Start()
     {
+        
         icons = new GameObject[10];
         RequestedTag = new string[10];
         RequestedTag[0] = "TopBun"; 
@@ -50,6 +53,7 @@ public class PlateManagerTutorial : MonoBehaviour
         ObjTag[3] = "nein";
         ObjTag[4] = "nein";
         ObjTag[5] = "nein";
+        StartCoroutine(DelayResetTutorial());
     }
     void Update(){
     }
@@ -128,10 +132,15 @@ public class PlateManagerTutorial : MonoBehaviour
             Instructions.text = "Your current order will be displayed on the board, press the button next to the grill to turn it on.";
             break;
             case 2:
-            order.DisplayOrder2();
+            order.DisplayOrder3();
+            Instructions.text = "You can use the machine on your right to slice some vegetables, Plate the order on the board";
             break;
             case 3:
-            order.DisplayOrder3();
+            Instructions.text = "For each ingredient you get right you get a point, In the game you have to meet the quota before time runs out. Make the order to leave the tutorial";
+            order.DisplayOrder4();
+            break;
+            case 4:
+            EndTutorial();
             break;
         }
         
@@ -154,6 +163,11 @@ public class PlateManagerTutorial : MonoBehaviour
         PointText.text = "Points:" + points.ToString();
         Debug.Log(points); 
         
+    }
+    void EndTutorial(){
+        plate.SetActive(false);
+        button.SetActive(false);
+        GameObject.Find("/BlackBoard/Tutorial").SetActive(false);
     }
 
 }

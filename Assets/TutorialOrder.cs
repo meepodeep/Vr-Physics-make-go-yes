@@ -38,6 +38,15 @@ public class TutorialOrder : MonoBehaviour
         Instantiate(Foods[Index[0]], Slots[0].transform.position, Slots[0].transform.rotation);
     }
     public void DisplayOrder3(){
+        Index[0] = 1;
+        Index[1] = 5;
+        Index[2] = 6;
+        Index[3] = 6;
+        Index[4] = 6;
+        Index[5] = 6;
+        Instantiate(Foods[Index[0]], Slots[0].transform.position, Slots[0].transform.rotation);
+    }
+    public void DisplayOrder4(){
         Index[0] = 0;
         Index[1] = 1;
         Index[2] = 2;
