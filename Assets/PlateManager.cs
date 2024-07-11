@@ -38,6 +38,7 @@ public class PlateManager : MonoBehaviour
     public GameObject mainScreen;
     public GameObject ButtonPanel;
     public GameObject[] icons;
+    public bool isPlaying = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,18 +53,27 @@ public class PlateManager : MonoBehaviour
         ObjTag = new string[10]; 
     }
     void Update(){
-        gameTimer -= .1f*Time.deltaTime;
+        
         TimerBig.fillAmount = gameTimer/100f;
         if(gameTimer <= 0f){
             endScreen.SetActive(true); 
             mainScreen.SetActive(false);
             ButtonPanel.SetActive(true);
+            isPlaying = false; 
             icons = GameObject.FindGameObjectsWithTag("Icon");
             foreach (GameObject icon in icons)
             {
                 Destroy(icon);
             }
+            gameTimer = 100;
         }
+        if(isPlaying == true)
+        {
+            gameTimer -= 15f*Time.deltaTime;
+        }
+    }
+    public void playing(){
+        isPlaying = true;
     }
     void FixedUpdate()
     {
@@ -74,7 +84,7 @@ public class PlateManager : MonoBehaviour
             quotaMet = false; 
         }
         Timer.fillAmount = OrderTimer;
-        OrderTimer -= .005f * Time.fixedDeltaTime; 
+        OrderTimer -= .006f * Time.fixedDeltaTime; 
         if(OrderTimer <= 0){
             FindObjectOfType<AudioManager>().Play("Ring");
             points = points - 5;

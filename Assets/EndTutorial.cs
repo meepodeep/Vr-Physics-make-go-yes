@@ -21,5 +21,8 @@ public class EndTutorial : MonoBehaviour
                 if(GameObject.Find("/Kitchen/Counter/StartPanel 1") != null){
         GameObject.Find("/Kitchen/Counter/StartPanel 1").SetActive(false);
         }
+            if(GameObject.Find("/BlackBoard/FinishScreen") != null){
+        GameObject.Find("/BlackBoard/FinishScreen").SetActive(false);
+        }
     }
 }
