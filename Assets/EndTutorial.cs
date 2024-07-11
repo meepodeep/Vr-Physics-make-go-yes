@@ -17,4 +17,9 @@ public class EndTutorial : MonoBehaviour
         }
         plate.SetActive(false);
     }
+    public void RemovePanel(){
+                if(GameObject.Find("/Kitchen/Counter/StartPanel 1") != null){
+        GameObject.Find("/Kitchen/Counter/StartPanel 1").SetActive(false);
+        }
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Grillable : MonoBehaviour
 {
@@ -41,23 +42,18 @@ public class Grillable : MonoBehaviour
                 Uncook();
             }
     }
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Grill"))
-        {   
-            FindObjectOfType<AudioManager>().Play("BurgerCook");
-        }
-    }
     void OnTriggerExit(Collider other)
     {
-        FindObjectOfType<AudioManager>().Stop("BurgerCook");
+       
         Uncook();
     }
     void Uncook(){
+         FindObjectOfType<AudioManager>().Stop("BurgerCook");
         Cooking.Stop();
         Cooking2.Stop();
     }
     void Cook(){
+        FindObjectOfType<AudioManager>().Play("BurgerCook");
         Cooking.Play(true);
         Cooking2.Play(true);
         Mathf.Clamp(grillPercent,0f, 15f);
