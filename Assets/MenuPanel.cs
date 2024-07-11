@@ -16,36 +16,51 @@ public class MenuPanel : MonoBehaviour
     public UnityEvent TutorialOnReleased;
     public UnityEvent ExitOnPressed;
     public UnityEvent ExitOnReleased;
-    float threshold =  -0.0000003875605f;
+    float threshold =  -0.00000002337221f;
     private float TutorialDistance;
     private float PlayDistance;
     private float ExitDistance;
+    private float ExitThreshold;
+    private float PlayThreshold;
+    private float TutorialThreshold;
+    bool CanToggle = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(delayThreshold());
     }
-
+    public IEnumerator delayThreshold(){
+        yield return new WaitForSeconds(.1f);
+        TutorialThreshold = TutorialDistance/1.11f;
+        ExitThreshold = ExitDistance/1.11f;
+        PlayThreshold = PlayDistance/1.11f;
+        CanToggle = true;
+    }
     // Update is called once per frame
     void Update()
     {
+        
         TutorialDistance = buttonTopTutorial.localPosition.z-buttonBase.localPosition.z;
-        if(TutorialDistance <= threshold){
-            TutorialOnReleased.Invoke();
-        }else{
+        if(TutorialDistance >= TutorialThreshold && CanToggle == true){
             TutorialOnPressed.Invoke();
-        }
-        PlayDistance = buttonTopPlay.localPosition.z-buttonBase.localPosition.z;
-        if(PlayDistance <= threshold){
-            PlayOnReleased.Invoke();
+            
         }else{
+            TutorialOnReleased.Invoke();
+        }
+        
+        PlayDistance = buttonTopPlay.localPosition.z-buttonBase.localPosition.z;
+        Debug.Log(PlayDistance);
+        if(PlayDistance >= PlayThreshold && CanToggle == true){
             PlayOnPressed.Invoke();
+        }else{
+            PlayOnReleased.Invoke();
         }
         ExitDistance = buttonTopExit.localPosition.z-buttonBase.localPosition.z;
-        if(ExitDistance <= threshold){
-            ExitOnReleased.Invoke();
-        }else{
+        if(ExitDistance >= ExitThreshold && CanToggle == true){
             ExitOnPressed.Invoke();
+        }else{
+            ExitOnReleased.Invoke();
+            
         }
     }
     public void Implode(){

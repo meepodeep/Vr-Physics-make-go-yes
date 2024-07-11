@@ -36,6 +36,7 @@ public class PlateManager : MonoBehaviour
     float gameTimer = 100;
     public GameObject endScreen;
     public GameObject mainScreen;
+    public GameObject ButtonPanel;
     public GameObject[] icons;
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class PlateManager : MonoBehaviour
         if(gameTimer <= 0f){
             endScreen.SetActive(true); 
             mainScreen.SetActive(false);
+            ButtonPanel.SetActive(true);
             icons = GameObject.FindGameObjectsWithTag("Icon");
             foreach (GameObject icon in icons)
             {
