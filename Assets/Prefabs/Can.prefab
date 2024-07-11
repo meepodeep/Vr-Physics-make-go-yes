@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4606641426500586025}
   - component: {fileID: 42037400219138610}
   - component: {fileID: 8966064369235377424}
+  - component: {fileID: 8654118354131039005}
   m_Layer: 8
   m_Name: CanCollider
   m_TagString: Soda
@@ -118,6 +119,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8654118354131039005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4201030943683172254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf887db3838c9444b2d35f567c1b30f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 3910062251169401731}
+  can: {fileID: 4606641426500586025}
 --- !u!1 &4610157298602251832
 GameObject:
   m_ObjectHideFlags: 0
