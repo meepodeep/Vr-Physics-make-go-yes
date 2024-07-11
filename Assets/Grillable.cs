@@ -5,7 +5,8 @@ using TMPro;
 
 public class Grillable : MonoBehaviour
 {
-    public GameObject Cooking;
+    public ParticleSystem Cooking;
+    public ParticleSystem Cooking2;
     float grillPercent;
     public GameObject burgerRaw; 
     public GameObject burgerCooked;
@@ -53,11 +54,12 @@ public class Grillable : MonoBehaviour
         Uncook();
     }
     void Uncook(){
-        Cooking.SetActive(false);
+        Cooking.Stop();
+        Cooking2.Stop();
     }
     void Cook(){
-        
-        Cooking.SetActive(true);
+        Cooking.Play(true);
+        Cooking2.Play(true);
         Mathf.Clamp(grillPercent,0f, 15f);
         grillPercent += 1f * Time.deltaTime;
         

@@ -9,7 +9,7 @@ using UnityEngine.SocialPlatforms;
 
 public class Slicer : MonoBehaviour
 {
-
+    public ParticleSystem particles;
     private Vector3 SpawnVector; 
     [SerializeField]
     public GameObject[] foodsCut; 
@@ -19,7 +19,7 @@ public class Slicer : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         SpawnVector = other.gameObject.transform.position;
-        
+        particles.Play();
 
         switch(other.tag){
             case "LettuceUncut":
