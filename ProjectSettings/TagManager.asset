@@ -18,6 +18,7 @@ TagManager:
   - Icon
   - Fridge
   - FoodStack
+  - Soda
   layers:
   - Default
   - TransparentFX

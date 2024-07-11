@@ -16,7 +16,7 @@ public class Order : MonoBehaviour
     void Start()
     {
         Index = new int[10];
-        icons = new GameObject[6];
+        icons = new GameObject[10];
         DisplayOrder();
     }
 
@@ -26,11 +26,13 @@ public class Order : MonoBehaviour
         Index[2] = Mathf.Clamp(Random.Range(0,4), 1, 3);
         Index[3] = Mathf.Clamp(Random.Range(0,4), 1, 3);
         Index[4] = 4;
+        Index[6] = 5;
         Instantiate(Foods[Index[0]], Slots[0].transform.position, Slots[0].transform.rotation);
         Instantiate(Foods[Index[1]], Slots[1].transform.position, Slots[0].transform.rotation);
         Instantiate(Foods[Index[2]], Slots[2].transform.position, Slots[0].transform.rotation);
         Instantiate(Foods[Index[3]], Slots[3].transform.position, Slots[0].transform.rotation);
         Instantiate(Foods[Index[4]], Slots[4].transform.position, Slots[0].transform.rotation);
+        Instantiate(Foods[Index[6]], Slots[5].transform.position, Slots[0].transform.rotation);
     }
     public void DeleteOldOrder(){
         icons = GameObject.FindGameObjectsWithTag("Icon");

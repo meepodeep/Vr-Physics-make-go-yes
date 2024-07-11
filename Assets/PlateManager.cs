@@ -49,7 +49,8 @@ public class PlateManager : MonoBehaviour
         RequestedTag[2] = "Burger"; 
         RequestedTag[3] = "Lettuce";
         RequestedTag[4] = "BottomBun";
-        RequestedTag[5] = "PlateReal";
+        RequestedTag[5] = "Soda";
+        RequestedTag[6] = "PlateReal";
         ObjTag = new string[10]; 
     }
     void Update(){
@@ -109,7 +110,10 @@ public class PlateManager : MonoBehaviour
             NewOrder();
             OrderTimer = 1;
             FindObjectOfType<AudioManager>().Play("Ding");
-        }else{
+            if(other.gameObject.CompareTag("Soda"))
+            {
+                ObjTag[6] = other.tag;
+            }else{
         if(IsPressed == true){
         ObjectNumber +=1;
         switch(ObjectNumber){
@@ -132,8 +136,9 @@ public class PlateManager : MonoBehaviour
             ObjTag[5] = other.tag;
             break;
         }
-        Destroy(other.gameObject); 
         }
+        }
+        Destroy(other.gameObject);
         }
     }
     public void Press(){
@@ -162,11 +167,12 @@ public class PlateManager : MonoBehaviour
         ObjTag[3] = "nein";
         ObjTag[4] = "nein";
         ObjTag[5] = "nein";
+        ObjTag[6] = "nein";
 
     }
     public void RingUp()
     {
-        if (ObjTag[5] == RequestedTag[5])
+        if (ObjTag[5] == RequestedTag[6])
         {
             if (ObjTag[0] == RequestedTag[0])
         {
@@ -193,6 +199,12 @@ public class PlateManager : MonoBehaviour
             points -= 1;
         }
         if (ObjTag[4] == RequestedTag[order.Index[4]])
+        {
+            points += 1;
+        }else{
+            points -= 1;
+        }
+        if (ObjTag[6] == RequestedTag[order.Index[6]])
         {
             points += 1;
         }else{
