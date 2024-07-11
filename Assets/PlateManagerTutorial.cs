@@ -140,6 +140,7 @@ public class PlateManagerTutorial : MonoBehaviour
             order.DisplayOrder4();
             break;
             case 4:
+            Instructions.text = "";
             EndTutorial();
             break;
         }
@@ -164,10 +165,11 @@ public class PlateManagerTutorial : MonoBehaviour
         Debug.Log(points); 
         
     }
-    void EndTutorial(){
-        plate.SetActive(false);
+    public void EndTutorial(){
         button.SetActive(false);
         GameObject.Find("/BlackBoard/Tutorial").SetActive(false);
+        GameObject.Find("/Kitchen/Counter/StartPanel 1").SetActive(true);
+        plate.SetActive(false);
     }
 
 }
