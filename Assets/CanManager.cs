@@ -18,12 +18,14 @@ public class CanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(currentAngleX);
         currentAngleY = Mathf.Abs(can.localEulerAngles.y); 
         currentAngleX = Mathf.Abs(can.localEulerAngles.x); 
         currentAngleZ = Mathf.Abs(can.localEulerAngles.z); 
         if (currentAngleY >= 80|| currentAngleX >= 80 || currentAngleZ >= 80){
             particles.Play();
-        }else{
+        }
+        if (currentAngleY <= 80|| currentAngleX <= 80 || currentAngleZ <= 80){
             particles.Stop();
         }
     }
