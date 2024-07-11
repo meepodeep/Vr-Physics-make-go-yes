@@ -35,7 +35,6 @@ public class MenuPanel : MonoBehaviour
         }else{
             TutorialOnPressed.Invoke();
         }
-        Debug.Log(PlayDistance);
         PlayDistance = buttonTopPlay.localPosition.z-buttonBase.localPosition.z;
         if(PlayDistance <= threshold){
             PlayOnReleased.Invoke();

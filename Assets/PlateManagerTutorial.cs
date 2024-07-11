@@ -28,16 +28,14 @@ public class PlateManagerTutorial : MonoBehaviour
     [SerializeField] TextMeshProUGUI PointText;
     public bool quotaMet;
     float gameTimer = 100;
-    public GameObject[] icons;
     int TutorialStep = 0;
     [SerializeField] TextMeshProUGUI Instructions;
     public GameObject button;
     public GameObject plate; 
+    public EndTutorial TutorialEnd;
     // Start is called before the first frame update
     void Start()
     {
-        
-        icons = new GameObject[10];
         RequestedTag = new string[10];
         RequestedTag[0] = "TopBun"; 
         RequestedTag[1] = "Onion"; 
@@ -59,8 +57,13 @@ public class PlateManagerTutorial : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (TutorialStep == 4){
+            order.DeleteOldOrder();
+            TutorialEnd.EndTut();
+            Instructions.text = "";
+        }
         if (IsPressed == true && canMove == true){
-        move = -.1f;
+        move = -.05f;
         Scanner.AddForce(transform.up * move);
         }else{
             move = 0f;
@@ -72,9 +75,10 @@ public class PlateManagerTutorial : MonoBehaviour
     
     public void OnTriggerEnter(Collider other)
     {
-        
+        Debug.Log(other.tag);
         if (other.gameObject.CompareTag("Plate")){
             NewOrder();
+            ObjectNumber = 0;
             OrderTimer = 1;
             FindObjectOfType<AudioManager>().Play("Ding");
         }else{
@@ -119,7 +123,7 @@ public class PlateManagerTutorial : MonoBehaviour
     }
     public IEnumerator DelayResetTutorial(){
         yield return new WaitForSeconds(.1f);
-        ObjectNumber = 0;
+        
         canMove = false; 
         order.DeleteOldOrder();
         switch(TutorialStep){
@@ -139,10 +143,6 @@ public class PlateManagerTutorial : MonoBehaviour
             Instructions.text = "For each ingredient you get right you get a point, In the game you have to meet the quota before time runs out. Make the order to leave the tutorial";
             order.DisplayOrder4();
             break;
-            case 4:
-            Instructions.text = "";
-            EndTutorial();
-            break;
         }
         
         ObjTag[0] = "nein";
@@ -155,6 +155,7 @@ public class PlateManagerTutorial : MonoBehaviour
     }
     public void RingUpTutorial()
     {
+        Debug.Log("ringUpTutorial");
         if (ObjTag[0] == RequestedTag[order.Index[0]]&&ObjTag[1] == RequestedTag[order.Index[1]]&&ObjTag[2] == RequestedTag[order.Index[2]]&&ObjTag[3] == RequestedTag[order.Index[3]]&&ObjTag[4] == RequestedTag[order.Index[4]])
         { 
             TutorialStep+=1;
@@ -162,14 +163,7 @@ public class PlateManagerTutorial : MonoBehaviour
         }
        
         PointText.text = "Points:" + points.ToString();
-        Debug.Log(points); 
         
-    }
-    public void EndTutorial(){
-        button.SetActive(false);
-        GameObject.Find("/BlackBoard/Tutorial").SetActive(false);
-        GameObject.Find("/Kitchen/Counter/StartPanel 1").SetActive(true);
-        plate.SetActive(false);
     }
 
 }

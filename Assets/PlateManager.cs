@@ -80,7 +80,7 @@ public class PlateManager : MonoBehaviour
             NewOrder();
         }
         if (IsPressed == true && canMove == true){
-        move = -.1f;
+        move = -.05f;
         Scanner.AddForce(transform.up * move);
         }else{
             move = 0f;
