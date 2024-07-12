@@ -124,12 +124,13 @@ public class PlateManager : MonoBehaviour
             OrderTimer = 1;
             FindObjectOfType<AudioManager>().Play("Ding");
         }else{
+
+        if(IsPressed == true){
             if(other.gameObject.CompareTag("Soda"))
             {
                 ObjTag[7] = other.tag;
                 Destroy(other.gameObject);
             }else{
-        if(IsPressed == true){
         ObjectNumber +=1;
         switch(ObjectNumber){
             case 1:
