@@ -48,12 +48,23 @@ public class PlateManager : MonoBehaviour
         RequestedTag[1] = "Onion"; 
         RequestedTag[2] = "Burger"; 
         RequestedTag[3] = "Lettuce";
-        RequestedTag[4] = "BottomBun";
-        RequestedTag[5] = "Soda";
-        RequestedTag[6] = "PlateReal";
-        RequestedTag[7] = "nein";
-        RequestedTag[8] = "CheeseCut";
+        RequestedTag[4] = "CheeseCut";
+        RequestedTag[5] = "BottomBun";
+        RequestedTag[6] = "Soda";
+        RequestedTag[7] = "PlateReal";
+        RequestedTag[8] = "nein";
+        
         ObjTag = new string[10]; 
+        ObjTag[0] = "nein";
+        ObjTag[1] = "nein";
+        ObjTag[2] = "nein";
+        ObjTag[3] = "nein";
+        ObjTag[4] = "nein";
+        ObjTag[5] = "nein";
+        ObjTag[6] = "nein";
+        ObjTag[7] = "nein";
+        ObjTag[8] = "nein";
+        ObjTag[9] = "nein";
     }
     void Update(){
         
@@ -139,9 +150,6 @@ public class PlateManager : MonoBehaviour
             case 6:
             ObjTag[5] = other.tag;
             break;
-            case 7:
-            ObjTag[6] = other.tag;
-            break;
         }
         Destroy(other.gameObject);
         }
@@ -183,50 +191,44 @@ public class PlateManager : MonoBehaviour
     }
     public void RingUp()
     {
-        if (ObjTag[5] == RequestedTag[6])
+        if (ObjTag[5] == RequestedTag[7])
         {
             if (ObjTag[0] == RequestedTag[0])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
-         if (ObjTag[1] == RequestedTag[order.Index[1]])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
-         if (ObjTag[2] == RequestedTag[order.Index[2]])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
-         if (ObjTag[3] == RequestedTag[order.Index[3]])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
-        if (ObjTag[4] == RequestedTag[order.Index[4]])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
-        if (ObjTag[6] == RequestedTag[order.Index[6]])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
-        if (ObjTag[7] == RequestedTag[order.Index[6]])
-        {
-            points += 1;
-        }else{
-            points -= 1;
-        }
+            {
+                points += 1;
+            }else{
+                points -= 1;
+            }
+            if (ObjTag[1] == RequestedTag[order.Index[1]])
+            {
+                points += 1;
+            }else{
+                points -= 1;
+            }
+            if (ObjTag[2] == RequestedTag[order.Index[2]])
+            {
+                points += 1;
+            }else{
+                points -= 1;
+            }
+            if (ObjTag[3] == RequestedTag[order.Index[3]])
+            {
+                points += 1;
+            }else{
+                points -= 1;
+            }
+            if (ObjTag[4] == RequestedTag[order.Index[4]])
+            {
+                points += 1;
+            }else{
+                points -= 1;
+            }
+            if (ObjTag[7] == RequestedTag[order.Index[6]])
+            {
+                points += 1;
+            }else{
+                points -= 1;
+            }
         }else{
             points -= 5;
         }

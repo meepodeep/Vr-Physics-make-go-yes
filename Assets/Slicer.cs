@@ -34,6 +34,12 @@ public class Slicer : MonoBehaviour
             Instantiate(foodsCut[1], SpawnVector, Quaternion.identity); 
             Instantiate(foodsCut[1], SpawnVector, Quaternion.identity);
             break;
+            case "CheeseUncut":
+            FindObjectOfType<AudioManager>().Play("ShopShop");
+            Destroy(other.gameObject);
+            Instantiate(foodsCut[2], SpawnVector, Quaternion.identity); 
+            Instantiate(foodsCut[2], SpawnVector, Quaternion.identity);
+            break;
 
         }
     }

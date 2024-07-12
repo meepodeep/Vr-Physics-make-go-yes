@@ -28,10 +28,10 @@ public class Order : MonoBehaviour
         Index[4] = 5;
         Index[6] = Mathf.Clamp(Random.Range(0,4), 1, 2);
         if (Index[6] == 1){
-            Index[6] = 5;
+            Index[6] = 6;
             Instantiate(Foods[Index[6]], Slots[5].transform.position, Slots[0].transform.rotation);
         }else{
-            Index[6] = 7;
+            Index[6] = 8;
         }
         Instantiate(Foods[Index[0]], Slots[0].transform.position, Slots[0].transform.rotation);
         Instantiate(Foods[Index[1]], Slots[1].transform.position, Slots[0].transform.rotation);

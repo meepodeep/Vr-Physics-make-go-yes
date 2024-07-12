@@ -48,7 +48,7 @@ public class Grillable : MonoBehaviour
         Uncook();
     }
     void Uncook(){
-         FindObjectOfType<AudioManager>().Stop("BurgerCook");
+        FindObjectOfType<AudioManager>().Stop("BurgerCook");
         Cooking.Stop();
         Cooking2.Stop();
     }

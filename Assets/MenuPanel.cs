@@ -16,7 +16,6 @@ public class MenuPanel : MonoBehaviour
     public UnityEvent TutorialOnReleased;
     public UnityEvent ExitOnPressed;
     public UnityEvent ExitOnReleased;
-    float threshold =  -0.00000002337221f;
     private float TutorialDistance;
     private float PlayDistance;
     private float ExitDistance;
@@ -31,9 +30,9 @@ public class MenuPanel : MonoBehaviour
     }
     public IEnumerator delayThreshold(){
         yield return new WaitForSeconds(1f);
-        TutorialThreshold = TutorialDistance/10e23f;
-        ExitThreshold = ExitDistance/10e23f;
-        PlayThreshold = PlayDistance/10e23f;
+        TutorialThreshold = TutorialDistance/10e30f;
+        ExitThreshold = ExitDistance/10e30f;
+        PlayThreshold = PlayDistance/10e30f;
         CanToggle = true;
     }
     // Update is called once per frame
