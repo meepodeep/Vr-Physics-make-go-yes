@@ -18,14 +18,15 @@ public class CanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentAngleX = can.localRotation.x; 
-        currentAngleY = can.localRotation.y; 
-        currentAngleZ = can.localRotation.z; 
-        Debug.Log(currentAngleX);
-        if (currentAngleX > 0){
+
+        float dotResult = Vector3.Dot(can.forward, Vector3.up);
+        Debug.Log(dotResult);
+        if (dotResult <=0){
             particles.SetActive(true);
         }else{
             particles.SetActive(false);
         }
+
+
     }
 }
