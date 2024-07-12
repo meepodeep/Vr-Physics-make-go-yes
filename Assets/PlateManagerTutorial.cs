@@ -137,7 +137,7 @@ public class PlateManagerTutorial : MonoBehaviour
             break;
             case 2:
             order.DisplayOrder3();
-            Instructions.text = "You can use the machine on your right to slice some vegetables, Plate the order on the board";
+            Instructions.text = "You can use the machine on your right to slice some vegetables or cheese, Plate the order on the board";
             break;
             case 3:
             Instructions.text = "For each ingredient you get right you get a point, In the game you have to meet the quota before time runs out. Make the order to leave the tutorial";

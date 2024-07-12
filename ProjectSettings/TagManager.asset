@@ -20,6 +20,8 @@ TagManager:
   - FoodStack
   - Soda
   - SodaTab
+  - CheeseUncut
+  - CheeseCut
   layers:
   - Default
   - TransparentFX

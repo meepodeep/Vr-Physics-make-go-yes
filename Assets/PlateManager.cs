@@ -52,6 +52,7 @@ public class PlateManager : MonoBehaviour
         RequestedTag[5] = "Soda";
         RequestedTag[6] = "PlateReal";
         RequestedTag[7] = "nein";
+        RequestedTag[8] = "CheeseCut";
         ObjTag = new string[10]; 
     }
     void Update(){
@@ -138,6 +139,9 @@ public class PlateManager : MonoBehaviour
             case 6:
             ObjTag[5] = other.tag;
             break;
+            case 7:
+            ObjTag[6] = other.tag;
+            break;
         }
         Destroy(other.gameObject);
         }
@@ -173,6 +177,8 @@ public class PlateManager : MonoBehaviour
         ObjTag[5] = "nein";
         ObjTag[6] = "nein";
         ObjTag[7] = "nein";
+        ObjTag[8] = "nein";
+        ObjTag[9] = "nein";
 
     }
     public void RingUp()
@@ -204,6 +210,12 @@ public class PlateManager : MonoBehaviour
             points -= 1;
         }
         if (ObjTag[4] == RequestedTag[order.Index[4]])
+        {
+            points += 1;
+        }else{
+            points -= 1;
+        }
+        if (ObjTag[6] == RequestedTag[order.Index[6]])
         {
             points += 1;
         }else{

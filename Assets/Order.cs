@@ -22,11 +22,11 @@ public class Order : MonoBehaviour
 
     public void DisplayOrder(){
         Index[0] = 0;
-        Index[1] = Mathf.Clamp(Random.Range(0,4), 1, 3);
-        Index[2] = Mathf.Clamp(Random.Range(0,4), 1, 3);
-        Index[3] = Mathf.Clamp(Random.Range(0,4), 1, 3);
-        Index[4] = 4;
-        Index[6] = Mathf.Clamp(Random.Range(0,4), 1, 2);;
+        Index[1] = Mathf.Clamp(Random.Range(0,5), 1, 4);
+        Index[2] = Mathf.Clamp(Random.Range(0,5), 1, 4);
+        Index[3] = Mathf.Clamp(Random.Range(0,5), 1, 4);
+        Index[4] = 5;
+        Index[6] = Mathf.Clamp(Random.Range(0,4), 1, 2);
         if (Index[6] == 1){
             Index[6] = 5;
             Instantiate(Foods[Index[6]], Slots[5].transform.position, Slots[0].transform.rotation);
