@@ -6,9 +6,7 @@ public class CanManager : MonoBehaviour
 {
     public GameObject particles; 
     public Transform can;
-    float currentAngleY; 
-    float currentAngleX; 
-    float currentAngleZ; 
+    public CanTab Cantab;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +18,13 @@ public class CanManager : MonoBehaviour
     {
 
         float dotResult = Vector3.Dot(can.forward, Vector3.up);
-        Debug.Log(dotResult);
+        if (Cantab.CanOpened == true)
+        {
         if (dotResult <=0){
             particles.SetActive(true);
         }else{
             particles.SetActive(false);
+        }
         }
 
 

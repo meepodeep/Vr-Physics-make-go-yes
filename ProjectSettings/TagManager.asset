@@ -19,6 +19,7 @@ TagManager:
   - Fridge
   - FoodStack
   - Soda
+  - SodaTab
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - Floor
   - Plate
   - Fridge
-  - 
+  - SodaTab
   - 
   - 
   - 
