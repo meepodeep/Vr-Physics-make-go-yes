@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanManager : MonoBehaviour
 {
-    public ParticleSystem particles; 
+    public GameObject particles; 
     public Transform can;
     float currentAngleY; 
     float currentAngleX; 
@@ -18,15 +18,14 @@ public class CanManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentAngleX = can.localRotation.x; 
+        currentAngleY = can.localRotation.y; 
+        currentAngleZ = can.localRotation.z; 
         Debug.Log(currentAngleX);
-        currentAngleY = Mathf.Abs(can.localEulerAngles.y); 
-        currentAngleX = Mathf.Abs(can.localEulerAngles.x); 
-        currentAngleZ = Mathf.Abs(can.localEulerAngles.z); 
-        if (currentAngleY >= 80|| currentAngleX >= 80 || currentAngleZ >= 80){
-            particles.Play();
-        }
-        if (currentAngleY <= 80|| currentAngleX <= 80 || currentAngleZ <= 80){
-            particles.Stop();
+        if (currentAngleX > 0){
+            particles.SetActive(true);
+        }else{
+            particles.SetActive(false);
         }
     }
 }

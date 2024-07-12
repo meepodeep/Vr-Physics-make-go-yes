@@ -27,10 +27,6 @@ public class DrinkFridgeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(fc.doorClosed == false && canSpawn == true){
-        Instantiate(food, new Vector3(0.892f,1.182332f,0.697f), Quaternion.Euler(0,0,0));
-        canSpawn = false;
-        }
         if(fc.doorClosed == true){
             if(foodNumber > 0){
             foreach (GameObject food in foodsInFridge){
@@ -38,7 +34,11 @@ public class DrinkFridgeManager : MonoBehaviour
             }
             foodNumber = 0;
             }
-            canSpawn = true;
+            Instantiate(food, new Vector3(0.892f,1.182332f,0.697f), Quaternion.Euler(0,0,0));
+            
+            fc.doorClosed = false;
+            
+            
         }
         
     }

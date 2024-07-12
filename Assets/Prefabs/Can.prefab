@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf887db3838c9444b2d35f567c1b30f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 3910062251169401731}
+  particles: {fileID: 7129018754970250102}
   can: {fileID: 4606641426500586025}
 --- !u!1 &4610157298602251832
 GameObject:
@@ -264,7 +264,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0

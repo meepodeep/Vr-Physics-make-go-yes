@@ -49,7 +49,6 @@ public class MenuPanel : MonoBehaviour
         }
         
         PlayDistance = buttonTopPlay.localPosition.y-buttonBase.localPosition.y;
-        Debug.Log(PlayDistance);
         if(PlayDistance <= PlayThreshold && CanToggle == true){
             PlayOnPressed.Invoke();
         }else{
