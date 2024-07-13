@@ -14,7 +14,7 @@ public class FanRotator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Quaternion deltaRotation = Quaternion.Euler(new Vector3(0,150,0) *  Time.fixedDeltaTime);
+        Quaternion deltaRotation = Quaternion.Euler(new Vector3(0,100,0) *  Time.fixedDeltaTime);
         rb.MoveRotation(rb.rotation * deltaRotation);
     }
 }
