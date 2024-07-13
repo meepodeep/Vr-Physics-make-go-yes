@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FanRotator : MonoBehaviour
@@ -10,7 +11,10 @@ public class FanRotator : MonoBehaviour
     {
         
     }
-
+    void  OnCollisionEnter(Collision other)
+    {
+        FindObjectOfType<AudioManager>().Play("Clang");
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

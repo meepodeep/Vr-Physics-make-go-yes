@@ -35,6 +35,7 @@ public class Grillable : MonoBehaviour
     {
             if(other.gameObject.CompareTag("Grill"))
             {   
+                
                 Cook();
             }
             if(other.gameObject.CompareTag("Untagged"))
@@ -48,12 +49,11 @@ public class Grillable : MonoBehaviour
         Uncook();
     }
     void Uncook(){
-        FindObjectOfType<AudioManager>().Stop("BurgerCook");
         Cooking.Stop();
         Cooking2.Stop();
+
     }
     void Cook(){
-        FindObjectOfType<AudioManager>().Play("BurgerCook");
         Cooking.Play(true);
         Cooking2.Play(true);
         Mathf.Clamp(grillPercent,0f, 15f);
