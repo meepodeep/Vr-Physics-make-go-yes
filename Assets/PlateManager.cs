@@ -118,6 +118,9 @@ public class PlateManager : MonoBehaviour
     
     public void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("PlateIgnore")){
+
+        }else{
         Debug.Log(other.tag);
         if (other.gameObject.CompareTag("Plate")){
             NewOrder();
@@ -156,6 +159,7 @@ public class PlateManager : MonoBehaviour
         }
         }
         
+        }
         }
     }
     public void Press(){

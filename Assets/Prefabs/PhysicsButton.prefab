@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3500979107878249645}
   m_Layer: 0
   m_Name: ButtonTop
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7804599846795102194}
   m_Layer: 8
   m_Name: Handle
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 1143831501417754917}
   m_Layer: 8
   m_Name: PhysicsButton
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 5010599399397008273}
   m_Layer: 8
   m_Name: ButtonBase
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

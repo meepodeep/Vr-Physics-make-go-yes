@@ -12,6 +12,7 @@ public class CanTab : MonoBehaviour
     {
         if(other.CompareTag("SodaTab"))
         {
+            FindObjectOfType<AudioManager>().Play("CanOpen");
             CanOpened = true;
             Unopened.SetActive(false);
             Opened.SetActive(true);

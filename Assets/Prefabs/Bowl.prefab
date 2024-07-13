@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5078244741554149522}
   m_Layer: 8
   m_Name: Bowl Collider (8)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 3563951095313592036}
   m_Layer: 8
   m_Name: Bowl
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 4725470744954637546}
   m_Layer: 8
   m_Name: Bowl Collider
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 4970815612292433574}
   m_Layer: 8
   m_Name: Bowl Collider (4)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 6908453211271931168}
   m_Layer: 8
   m_Name: Bowl Collider (5)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 6549368881934700524}
   m_Layer: 8
   m_Name: Bowl Collider (1)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 7124361530060431327}
   m_Layer: 8
   m_Name: Bowl Collider (7)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 3076581815712901060}
   m_Layer: 8
   m_Name: Bowl Collider (3)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 7030274113389122629}
   m_Layer: 8
   m_Name: Bowl Collider (6)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 4089752572329002177}
   m_Layer: 8
   m_Name: Bowl Collider (2)
-  m_TagString: Untagged
+  m_TagString: PlateIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
