@@ -10,6 +10,7 @@ public class DrinkFridgeManager : MonoBehaviour
     public FridgeCollider fc;
     GameObject[] foodsInFridge;
     GameObject foodInstantiated;
+    public Transform fridge;
     int foodNumber = 1;
     // Start is called before the first frame update
     void Start()
@@ -33,8 +34,7 @@ public class DrinkFridgeManager : MonoBehaviour
             }
             foodNumber = 0;
             }
-            Instantiate(food, new Vector3(0.892f,1.182332f,0.697f), Quaternion.Euler(0,0,0));
-            
+            (Instantiate (food, new Vector3(0.892f,fridge.position.y-.04f,0.697f), Quaternion.Euler(0,0,0)) as GameObject).transform.parent = fridge.transform;
             fc.doorClosed = false;
             
             

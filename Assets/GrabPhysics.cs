@@ -11,7 +11,7 @@ public class GrabPhysics : MonoBehaviour
     public LayerMask grabLayer;
     float max = 0;
     private FixedJoint fixedJoint;
-    private bool isGrabbing = false;
+    public bool isGrabbing = false;
     // Update is called once per frame
     void FixedUpdate()
     {

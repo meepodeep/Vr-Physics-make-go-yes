@@ -16,26 +16,43 @@ public class PullObject : MonoBehaviour
     public GameObject CurrentObject;
     public Collider CurrentObjectCollider;
     public bool IsGrabbing = false;
+    public GrabPhysics grabPhysics;
+    [SerializeField] LineRenderer lineRenderer;
+    public ParticleSystem particles; 
     void FixedUpdate()
     {
-        bool isGrabButtonPressed = grabInputSource.action.ReadValue<float>() > 0.1f;
-        if (CurrentObject != null && isGrabButtonPressed){
+        bool isGrabButtonPressedPull = grabInputSource.action.ReadValue<float>() > 0.1f;
+        if (CurrentObject != null && isGrabButtonPressedPull && grabPhysics.isGrabbing == false){
+            particles.Play();
+            lineRenderer.enabled = false;
             CurrentObjectCollider.attachedRigidbody.AddForce((hand.position - CurrentObject.transform.position)* 40f, ForceMode.Force);
+        }else{
+            particles.Stop();
         }
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(hand.position, hand.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, layersToHit))
         {
-            if (IsGrabbing && isGrabButtonPressed && hit.distance >= .5){
+
+
+            if (IsGrabbing && isGrabButtonPressedPull && hit.distance >= .5){
             CurrentObject = hit.collider.gameObject;
             CurrentObjectCollider = hit.collider;
             IsGrabbing = false;
             }
             if (hit.distance >= .5){
+            if(isGrabButtonPressedPull == false){
+            lineRenderer.enabled = true;
+            lineRenderer.SetPosition(0,hand.transform.position);
+            lineRenderer.SetPosition(1,hit.point);}
             Debug.Log(hit.distance);
             Debug.DrawRay(hand.position, hand.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log(hit.collider.gameObject.name + "Did Hit");}
+            Debug.Log(hit.collider.gameObject.name + "Did Hit");} else{
+                lineRenderer.enabled = false;
+            }
+        }else{
+            lineRenderer.enabled = false;
         }
-        if(isGrabButtonPressed == false){
+        if(isGrabButtonPressedPull == false){
             IsGrabbing = true;
             CurrentObject = null;
             CurrentObjectCollider = null;
