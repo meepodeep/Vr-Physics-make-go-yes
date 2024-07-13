@@ -8,7 +8,6 @@ public class DrinkFridgeManager : MonoBehaviour
 {
     public GameObject food;
     public FridgeCollider fc;
-    bool canSpawn = false; 
     GameObject[] foodsInFridge;
     GameObject foodInstantiated;
     int foodNumber = 1;

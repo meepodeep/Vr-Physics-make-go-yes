@@ -27,7 +27,6 @@ public class PlateManagerTutorial : MonoBehaviour
     float OrderTimer = 1;
     [SerializeField] TextMeshProUGUI PointText;
     public bool quotaMet;
-    float gameTimer = 100;
     int TutorialStep = 0;
     [SerializeField] TextMeshProUGUI Instructions;
     public GameObject button;
