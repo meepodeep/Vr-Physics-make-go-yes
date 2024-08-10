@@ -30,9 +30,9 @@ public class MenuPanel : MonoBehaviour
     }
     public IEnumerator delayThreshold(){
         yield return new WaitForSeconds(1f);
-        TutorialThreshold = TutorialDistance/10e30f;
-        ExitThreshold = ExitDistance/10e30f;
-        PlayThreshold = PlayDistance/10e30f;
+        TutorialThreshold = TutorialDistance/10e35f;
+        ExitThreshold = ExitDistance/10e35f;
+        PlayThreshold = PlayDistance/10e35f;
         CanToggle = true;
     }
     // Update is called once per frame

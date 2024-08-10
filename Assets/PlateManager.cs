@@ -39,6 +39,7 @@ public class PlateManager : MonoBehaviour
     public GameObject ButtonPanel;
     public GameObject[] icons;
     public bool isPlaying = false;
+    bool canOrder = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -99,11 +100,11 @@ public class PlateManager : MonoBehaviour
         }
         Timer.fillAmount = OrderTimer;
         OrderTimer -= .006f * Time.fixedDeltaTime; 
-        if(OrderTimer <= 0){
+        if(OrderTimer <= 0 && canOrder == true){
             FindObjectOfType<AudioManager>().Play("Ring");
-            points = points - 5;
             missedOrders +=1;
             NewOrder();
+            canOrder = false; 
         }
         if (IsPressed == true && canMove == true){
         move = -.05f;
@@ -240,7 +241,7 @@ public class PlateManager : MonoBehaviour
         fulfilledOrders += 1; 
         PointText.text = "Points:" + points.ToString();
         Debug.Log(points); 
-        
+        canOrder = true; 
     }
 
 }
